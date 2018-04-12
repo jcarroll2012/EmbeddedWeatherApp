@@ -1,0 +1,61 @@
+body, html {
+  height: 100%;
+}
+table{
+  border-collapse: collapse;
+  width: 100%;
+}
+th, td{
+  text-align: left;
+  padding: 8px;
+}
+h1.titletext{
+  color: green;
+  text-align: center;
+  font: bold;
+  font-size: 30px;
+  background-color: gold;
+}
+
+.sunny{
+  background-image: url("../images/sunny.jpg");
+
+  height: 50%;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.weathertext{
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: black;
+  font-size: 40px;
+}
+
+.freezing{
+  background-image: url("../images/snowflake.png");
+
+  height: 50%;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.chilly{
+  background-image: url("../images/chilly.jpg");
+
+  height: 50%;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}

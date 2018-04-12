@@ -1,0 +1,70 @@
+extends layout
+
+block content
+
+  h1(class= "titletext") Welcome to the Baylor Weather App 
+    
+
+
+  // Get the most recent data and sort the array with most
+  // recent data first
+  - var today = results[0]
+  for data in results
+    if data.time > today.time
+      - today = data
+  - results.sort(function(a,b){
+  -   return a.time < b.time
+  - })
+
+
+  body
+    p Today: #{today.time}
+    p Temperature: #{today.temperature}
+    p Wind Speed: #{today.windSpeed}
+    p Pressure: #{today.pressure}
+    h2
+      p Today's Data:
+    for data in results
+      -var time
+      if data.time.getHours() > 12
+        -time = data.time.getHours() - 12;
+        -time = time + ":" + data.time.getMinutes() + "P.M."
+      else
+        -var time = data.time.getHours() + ":" +data.time.getMinutes() + "A.M.";
+      - console.log(data.time)
+      if data.temperature >= 70
+        <div class="sunny">
+          <div class="weathertext">
+            h1(class= text) 
+            p #{time}
+            p #{data.temperature} Degrees
+            p #{data.windSpeed} Mph
+            p #{data.pressure} psi
+          </div>
+        </div>
+
+      else if data.temperature >= 32
+        <div class="chilly">
+          <div class="weathertext">
+            h1(class= text) 
+            p #{time}
+            p #{data.temperature} Degrees
+            p #{data.windSpeed} Mph
+            p #{data.pressure} psi
+          </div>
+        </div>
+
+
+      else if data.temperature <= 32
+        <div class="freezing">
+          <div class="weathertext">
+            h1(class= text) 
+            p #{time}
+            p #{data.temperature} Degrees
+            p #{data.windSpeed} Mph
+            p #{data.pressure} psi
+          </div>
+        </div>
+
+  
+  
