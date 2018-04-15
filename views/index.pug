@@ -1,11 +1,8 @@
 extends layout
 
 block content
-
+  
   h1(class= "titletext") Welcome to the Baylor Weather App 
-    
-
-
   // Get the most recent data and sort the array with most
   // recent data first
   - var today = results[0]
@@ -15,23 +12,25 @@ block content
   - results.sort(function(a,b){
   -   return a.time < b.time
   - })
-
-
   body
-    p Today: #{today.time}
-    p Temperature: #{today.temperature}
-    p Wind Speed: #{today.windSpeed}
-    p Pressure: #{today.pressure}
-    h2
-      p Today's Data:
+    -var time;
+    if today.time.getHours() > 12
+      -time = today.time.getHours() - 12;
+      -time = time + ":" + today.time.getMinutes() + "P.M."
+    else
+      -var time = today.time.getHours() + ":" +today.time.getMinutes() + "A.M.";
+    div(class= "navbar")
+      p Today: #{today.time.getMonth()}/#{today.time.getDate()}/#{today.time.getFullYear()} #{time} 
+      p(class= "bordered") Temperature: #{today.temperature}&deg;F 
+      p(class= "bordered") Wind Speed: #{today.windSpeed}mph
+      p(class="noborder") Pressure: #{today.pressure}psi
+    h2 Today's Data:
     for data in results
-      -var time
       if data.time.getHours() > 12
         -time = data.time.getHours() - 12;
         -time = time + ":" + data.time.getMinutes() + "P.M."
       else
         -var time = data.time.getHours() + ":" +data.time.getMinutes() + "A.M.";
-      - console.log(data.time)
       if data.temperature >= 70
         <div class="sunny">
           <div class="weathertext">

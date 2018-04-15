@@ -43,5 +43,5 @@ app.use(function(err, req, res, next) {
 var http = require('http');
 module.exports = app;
 var server = http.createServer(app);
-server.listen(process.env.PORT || 4000);
+server.listen(4000);
 module.exports = app;

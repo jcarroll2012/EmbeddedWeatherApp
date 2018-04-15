@@ -13,8 +13,9 @@ h1.titletext{
   color: green;
   text-align: center;
   font: bold;
-  font-size: 30px;
+  font-size: 40px;
   background-color: gold;
+  padding-top: 1cm;
 }
 
 .sunny{
@@ -58,4 +59,43 @@ h1.titletext{
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+}
+
+.navbar{
+  overflow: hidden;
+  background-color:green;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  font-size: 60px;
+  text-align: center;}
+.bordered{
+  float: left;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 30px;
+  border-right: 5px solid black;
+}
+.noborder{
+  float: left;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 30px;
+}
+
+.main{
+  padding: 16px;
+  margin-top: 30px;
+  height: 1500px;
+}
+
+body{
+  padding-top: 8cm;
+  margin: 2px;
+}
+
+h2{
+  font-size: 35px;
 }
