@@ -68,7 +68,9 @@ h1.titletext{
   top: 0;
   width: 100%;
   font-size: 60px;
-  text-align: center;}
+  text-align: center;
+  z-index: 101;
+}
 .bordered{
   float: left;
   text-align: center;
