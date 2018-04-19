@@ -1,0 +1,41 @@
+extends archiveLayout
+
+block archiveContent
+  
+  h1(class= "titletext") Welcome to the Weather Archive
+
+  - var today = current[0]
+  - results.sort(function(a,b){
+  -   return a.time < b.time
+  - })
+  -console.log(current[0]);
+  body
+    -var time;
+    if today.time.getHours() > 12
+      -time = today.time.getHours() - 12;
+      -time = time + ":" + today.time.getMinutes() + "P.M."
+    else
+      -var time = today.time.getHours() + ":" +today.time.getMinutes() + "A.M.";
+    div(class= "navbar")
+      p(class= "navTitle") Today: #{today.time.getMonth()}/#{today.time.getDate()}/#{today.time.getFullYear()} #{time} 
+      p(class= "bordered") Temperature: #{today.temperature}&deg;F 
+      p(class= "bordered") Wind Speed: #{today.windSpeed}mph
+      p(class= "bordered") Pressure: #{today.pressure}psi
+
+    a(href= '/') Home
+    h2 Historical Data:
+    p Use ctrl+F to quick search a specific date in the format MM/DD/YYYY
+
+    table
+      tr
+        th Date
+        th Temperature
+        th Wind Speed
+        th Pressure
+
+      for data in results
+        tr
+          td #{data.time.getMonth()}/#{data.time.getDate()}/#{data.time.getFullYear()}
+          td #{data.temperature}
+          td #{data.windSpeed}
+          td #{data.pressure}

@@ -5,10 +5,7 @@ block content
   h1(class= "titletext") Welcome to the Baylor Weather App 
   // Get the most recent data and sort the array with most
   // recent data first
-  - var today = results[0]
-  for data in results
-    if data.time > today.time
-      - today = data
+  - var today = current[0]
   - results.sort(function(a,b){
   -   return a.time < b.time
   - })
@@ -20,10 +17,12 @@ block content
     else
       -var time = today.time.getHours() + ":" +today.time.getMinutes() + "A.M.";
     div(class= "navbar")
-      p Today: #{today.time.getMonth()}/#{today.time.getDate()}/#{today.time.getFullYear()} #{time} 
+      p(class= "navTitle") Today: #{today.time.getMonth()}/#{today.time.getDate()}/#{today.time.getFullYear()} #{time} 
       p(class= "bordered") Temperature: #{today.temperature}&deg;F 
       p(class= "bordered") Wind Speed: #{today.windSpeed}mph
-      p(class="noborder") Pressure: #{today.pressure}psi
+      p(class="bordered") Pressure: #{today.pressure}psi
+    a(href= '/archive') The Archive    
+    p A daily history of the weather data collected.
     h2 Today's Data:
     for data in results
       if data.time.getHours() > 12

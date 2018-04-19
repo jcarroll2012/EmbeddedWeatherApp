@@ -16,6 +16,7 @@ h1.titletext{
   font-size: 40px;
   background-color: gold;
   padding-top: 1cm;
+  padding-bottom: 1cm;
 }
 
 .sunny{
@@ -36,7 +37,8 @@ h1.titletext{
   left: 50%;
   transform: translate(-50%, -50%);
   color: black;
-  font-size: 40px;
+  font-size: 50px;
+  font-weight: bolder;
 }
 
 .freezing{
@@ -51,7 +53,7 @@ h1.titletext{
 }
 
 .chilly{
-  background-image: url("../images/chilly.jpg");
+  background-image: url("../images/chilly.png");
 
   height: 50%;
 
@@ -67,24 +69,22 @@ h1.titletext{
   position: fixed;
   top: 0;
   width: 100%;
-  font-size: 60px;
+  font-size: 50px;
   text-align: center;
   z-index: 101;
 }
-.bordered{
-  float: left;
+navTitle{
   text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 30px;
-  border-right: 5px solid black;
+  font-size: 40px;
 }
-.noborder{
+.bordered{
+  border-collapse: collapse;
   float: left;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
   font-size: 30px;
+  border: 5px solid black;
 }
 
 .main{
@@ -94,10 +94,32 @@ h1.titletext{
 }
 
 body{
-  padding-top: 8cm;
+  padding-top: 7cm;
   margin: 2px;
 }
 
 h2{
   font-size: 35px;
+}
+tr:nth-child(even){
+  background-color: rgb(65, 176, 240);
+}
+tr:nth-child(odd){
+  background: rgb(98, 175, 98);
+}
+
+table{
+  border-collapse: collapse;
+}
+table, th{
+  border: 2px solid black;
+  text-align: center;
+}
+
+td{
+  text-align: center;
+}
+a{
+  text-align: left;
+  font-size: 20px;
 }

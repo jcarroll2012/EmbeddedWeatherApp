@@ -18,13 +18,48 @@ router.get('/test', function(req, res, next) {
 });
 //Get todays info
 router.get('/', function(req, res, next) {
-    db.getToday(function(err, results){
+    var current;
+    db.getCurrent(function(err, results){
         if(err){
             res.status(500).send("Server Error");
             return;
         }
         else{
-            res.render('index', {"results": results} );
+            current = results;
+            db.getToday(function(err, results){
+                if(err){
+                    res.status(500).send("Server Error");
+                    return;
+                }
+                else{
+                    res.render('index', {"results": results, "current": current} );
+                }
+            })
+        }
+    })
+
+
+});
+
+//Get todays info
+router.get('/archive', function(req, res, next) {
+    var current;
+    db.getCurrent(function(err, results){
+        if(err){
+            res.status(500).send("Server Error");
+            return;
+        }
+        else{
+            current = results;
+            db.getArchive(function(err, results){
+                if(err){
+                    res.status(500).send("Server Error");
+                    return;
+                }
+                else{
+                    res.render('archive', {"results": results, "current": current} );
+                }
+            })
         }
     })
 });
