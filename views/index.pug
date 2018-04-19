@@ -23,21 +23,18 @@ block content
       p(class="bordered") Pressure: #{today.pressure}psi
     a(href= '/archive') The Archive    
     p A daily history of the weather data collected.
-    h2 Today's Data:
+    h2(class= "today") Today's Data:
     for data in results
       if data.time.getHours() > 12
         -time = data.time.getHours() - 12;
         -time = time + ":" + data.time.getMinutes() + "P.M."
       else
         -var time = data.time.getHours() + ":" +data.time.getMinutes() + "A.M.";
-      if data.temperature >= 70
+      if data.temperature >= 65
         <div class="sunny">
           <div class="weathertext">
             h1(class= text) 
-            p #{time}
-            p #{data.temperature} Degrees
-            p #{data.windSpeed} Mph
-            p #{data.pressure} psi
+            p #{time}<br />#{data.temperature}&deg;F<br />#{data.windSpeed} Mph<br />#{data.pressure} psi
           </div>
         </div>
 
@@ -45,10 +42,7 @@ block content
         <div class="chilly">
           <div class="weathertext">
             h1(class= text) 
-            p #{time}
-            p #{data.temperature} Degrees
-            p #{data.windSpeed} Mph
-            p #{data.pressure} psi
+            p #{time}<br />#{data.temperature}&deg;F<br />#{data.windSpeed} Mph<br />#{data.pressure} psi
           </div>
         </div>
 
@@ -57,10 +51,7 @@ block content
         <div class="freezing">
           <div class="weathertext">
             h1(class= text) 
-            p #{time}
-            p #{data.temperature} Degrees
-            p #{data.windSpeed} Mph
-            p #{data.pressure} psi
+            p #{time}<br />#{data.temperature}&deg;F<br />#{data.windSpeed} Mph<br />#{data.pressure} psi
           </div>
         </div>
 

@@ -8,7 +8,6 @@ block archiveContent
   - results.sort(function(a,b){
   -   return a.time < b.time
   - })
-  -console.log(current[0]);
   body
     -var time;
     if today.time.getHours() > 12
@@ -36,6 +35,6 @@ block archiveContent
       for data in results
         tr
           td #{data.time.getMonth()}/#{data.time.getDate()}/#{data.time.getFullYear()}
-          td #{data.temperature}
-          td #{data.windSpeed}
-          td #{data.pressure}
+          td #{data.temperature}&deg;F 
+          td #{data.windSpeed}mph
+          td #{data.pressure}psi
