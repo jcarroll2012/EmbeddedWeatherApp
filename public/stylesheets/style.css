@@ -26,7 +26,7 @@ h1.titletext{
 
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   position: relative;
 }
 
@@ -48,7 +48,7 @@ h1.titletext{
 
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   position: relative;
 }
 
@@ -59,7 +59,7 @@ h1.titletext{
 
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   position: relative;
 }
 
@@ -101,10 +101,10 @@ body{
 h2{
   font-size: 35px;
 }
-tr:nth-child(even){
+tr.archiveRow:nth-child(even){
   background-color: rgb(65, 176, 240);
 }
-tr:nth-child(odd){
+tr.archiveRow:nth-child(odd){
   background: rgb(98, 175, 98);
 }
 
@@ -130,4 +130,10 @@ a{
 
 h2.today{
   text-align: center;
+}
+
+table.navTable, td.navData{
+  border-collapse: collapse;
+  border: 10px solid black;
+  font-size: 30px;
 }

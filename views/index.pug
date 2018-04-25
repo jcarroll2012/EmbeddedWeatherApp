@@ -18,9 +18,11 @@ block content
       -var time = today.time.getHours() + ":" +today.time.getMinutes() + "A.M.";
     div(class= "navbar")
       p(class= "navTitle") Today: #{today.time.getMonth()}/#{today.time.getDate()}/#{today.time.getFullYear()} #{time} 
-      p(class= "bordered") Temperature: #{today.temperature}&deg;F 
-      p(class= "bordered") Wind Speed: #{today.windSpeed}mph
-      p(class="bordered") Pressure: #{today.pressure}psi
+      table(class= "navTable")
+        tr(class= "navRow")
+          td(class= "navData") Temperature: #{today.temperature}&deg;F 
+          td(class= "navData") Wind Speed: #{today.windSpeed}mph
+          td(class= "navData") Pressure: #{today.pressure}psi
     a(href= '/archive') The Archive    
     p A daily history of the weather data collected.
     h2(class= "today") Today's Data:

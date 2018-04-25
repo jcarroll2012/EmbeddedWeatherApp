@@ -17,23 +17,25 @@ block archiveContent
       -var time = today.time.getHours() + ":" +today.time.getMinutes() + "A.M.";
     div(class= "navbar")
       p(class= "navTitle") Today: #{today.time.getMonth()}/#{today.time.getDate()}/#{today.time.getFullYear()} #{time} 
-      p(class= "bordered") Temperature: #{today.temperature}&deg;F 
-      p(class= "bordered") Wind Speed: #{today.windSpeed}mph
-      p(class= "bordered") Pressure: #{today.pressure}psi
+      table(class= "navTable")
+        tr(class= "navRow")
+          td(class= "navData") Temperature: #{today.temperature}&deg;F 
+          td(class= "navData") Wind Speed: #{today.windSpeed}mph
+          td(class= "navData") Pressure: #{today.pressure}psi
 
     a(href= '/') Home
     h2 Historical Data:
     p Use ctrl+F to quick search a specific date in the format MM/DD/YYYY
 
     table
-      tr
+      tr(class="archiveRow")
         th Date
         th Temperature
         th Wind Speed
         th Pressure
 
       for data in results
-        tr
+        tr(class="archiveRow")
           td #{data.time.getMonth()}/#{data.time.getDate()}/#{data.time.getFullYear()}
           td #{data.temperature}&deg;F 
           td #{data.windSpeed}mph
