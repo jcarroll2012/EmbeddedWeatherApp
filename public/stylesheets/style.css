@@ -15,8 +15,8 @@ h1.titletext{
   font: bold;
   font-size: 40px;
   background-color: gold;
-  padding-top: 1cm;
-  padding-bottom: 1cm;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
 .sunny{
@@ -124,8 +124,17 @@ td{
   font-size: 15px;
 }
 a{
-  text-align: left;
-  font-size: 20px;
+  display: block;
+  color: gold;
+  background-color: green;
+  text-align: center;
+  text-decoration: none;
+  font-size: 25px;
+  margin-top: -30px; 
+}
+
+a:hover{
+  background-color: rgb(7, 90, 7);
 }
 
 h2.today{

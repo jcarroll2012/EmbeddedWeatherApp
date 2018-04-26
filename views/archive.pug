@@ -16,12 +16,14 @@ block archiveContent
     else
       -var time = today.time.getHours() + ":" +today.time.getMinutes() + "A.M.";
     div(class= "navbar")
-      p(class= "navTitle") Today: #{today.time.getMonth()}/#{today.time.getDate()}/#{today.time.getFullYear()} #{time} 
+      p(class= "navTitle") Today: #{today.time.getMonth() + 1}/#{today.time.getDate()}/#{today.time.getFullYear()} #{time} 
       table(class= "navTable")
         tr(class= "navRow")
           td(class= "navData") Temperature: #{today.temperature}&deg;F 
-          td(class= "navData") Wind Speed: #{today.windSpeed}mph
-          td(class= "navData") Pressure: #{today.pressure}psi
+          td(class= "navData") Wind Speed: #{today.windSpeed}mph #{today.windDirection}
+          -var press = Math.round((today.pressure/0.02853)*100)/100;
+          td(class= "navData") Pressure: #{today.pressure}inHg #{press}Hpa
+          td(class= "navData") Humidity: #{today.humidity}%
 
     a(href= '/') Home
     h2 Historical Data:
@@ -33,10 +35,13 @@ block archiveContent
         th Temperature
         th Wind Speed
         th Pressure
+        th Humidity
 
       for data in results
+        -press = Math.round((data.pressure/0.02853)*100)/100;
         tr(class="archiveRow")
-          td #{data.time.getMonth()}/#{data.time.getDate()}/#{data.time.getFullYear()}
+          td #{data.time.getMonth() + 1}/#{data.time.getDate()}/#{data.time.getFullYear()}
           td #{data.temperature}&deg;F 
-          td #{data.windSpeed}mph
-          td #{data.pressure}psi
+          td #{data.windSpeed}mph #{data.windDirection}
+          td #{data.pressure}inHg #{press}Hpa
+          td #{data.humidity}%
