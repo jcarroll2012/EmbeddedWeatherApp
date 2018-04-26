@@ -16,18 +16,18 @@ block archiveContent
     else
       -var time = today.time.getHours() + ":" +today.time.getMinutes() + "A.M.";
     div(class= "navbar")
-      p(class= "navTitle") Today: #{today.time.getMonth() + 1}/#{today.time.getDate()}/#{today.time.getFullYear()} #{time} 
+      p(class= "navTitle") Currently: #{today.time.getMonth() + 1}/#{today.time.getDate()}/#{today.time.getFullYear()} #{time} 
       table(class= "navTable")
         tr(class= "navRow")
           td(class= "navData") Temperature: #{today.temperature}&deg;F 
           td(class= "navData") Wind Speed: #{today.windSpeed}mph #{today.windDirection}
-          -var press = Math.round((today.pressure/0.02853)*100)/100;
+          -var press = Math.round((today.pressure/0.02953)*100)/100;
           td(class= "navData") Pressure: #{today.pressure}inHg #{press}Hpa
           td(class= "navData") Humidity: #{today.humidity}%
-
+    p(class= "Description") A history of each day's average daily weather collected.
+    p(class= "Description") Use ctrl+F to quick search a specific date in the format MM/DD/YYYY.
     a(href= '/') Home
     h2 Historical Data:
-    p Use ctrl+F to quick search a specific date in the format MM/DD/YYYY
 
     table
       tr(class="archiveRow")
@@ -38,10 +38,10 @@ block archiveContent
         th Humidity
 
       for data in results
-        -press = Math.round((data.pressure/0.02853)*100)/100;
+        -press = Math.round((data.pressure/0.02953)*100)/100;
         tr(class="archiveRow")
           td #{data.time.getMonth() + 1}/#{data.time.getDate()}/#{data.time.getFullYear()}
           td #{data.temperature}&deg;F 
-          td #{data.windSpeed}mph #{data.windDirection}
-          td #{data.pressure}inHg #{press}Hpa
+          td #{data.windSpeed}mph
+          td #{data.pressure}inHg #{press}hPa
           td #{data.humidity}%

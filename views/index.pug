@@ -3,6 +3,7 @@ extends layout
 block content
   
   h1(class= "titletext") Welcome to the Baylor Weather App 
+  p(Class= "Description") An hourly history of the weather data collected.
   a(href= '/archive' class=) The Archive
   // Get the most recent data and sort the array with most
   // recent data first
@@ -18,29 +19,27 @@ block content
     else
       -var time = today.time.getHours() + ":" +today.time.getMinutes() + "A.M.";
     div(class= "navbar")
-      p(class= "navTitle") Today: #{today.time.getMonth() + 1}/#{today.time.getDate()}/#{today.time.getFullYear()} #{time} 
+      p(class= "navTitle") Currently: #{today.time.getMonth() + 1}/#{today.time.getDate()}/#{today.time.getFullYear()} #{time} 
       table(class= "navTable")
         tr(class= "navRow")
           td(class= "navData") Temperature: #{today.temperature}&deg;F 
-          td(class= "navData") Wind Speed: #{today.windSpeed}mph #{today.windDirection}
-          -var press = Math.round((today.pressure/0.02853)*100)/100;
-          td(class= "navData") Pressure: #{today.pressure}inHg #{press}Hpa
+          td(class= "navData") Wind Speed: #{today.windSpeed}mph
+          -var press = Math.round((today.pressure/0.02953)*100)/100;
+          td(class= "navData") Pressure: #{today.pressure}inHg #{press}hPa
           td(class= "navData") Humidity: #{today.humidity}%
-    
-    p A daily history of the weather data collected.
     h2(class= "today") Today's Data:
     for data in results
-      -press = Math.round((data.pressure/0.02853)*100)/100;
+      -press = Math.round((data.pressure/0.02953)*100)/100;
       if data.time.getHours() > 12
         -time = data.time.getHours() - 12;
-        -time = time + ":" + data.time.getMinutes() + "P.M."
+        -time = time + ":" + data.time.getMinutes() + "0 P.M."
       else
-        -var time = data.time.getHours() + ":" +data.time.getMinutes() + "A.M.";
+        -var time = data.time.getHours() + ":" +data.time.getMinutes() + "0 A.M.";
       if data.temperature >= 65
         <div class="sunny">
           <div class="weathertext">
             h1(class= text) 
-            p #{time}<br />#{data.temperature}&deg;F<br />#{data.windSpeed}Mph #{today.windDirection}<br />#{press}inHg
+            p #{time}<br />#{data.temperature}&deg;F<br />#{data.windSpeed}mph<br />#{press}hPa
           </div>
         </div>
 
@@ -48,7 +47,7 @@ block content
         <div class="chilly">
           <div class="weathertext">
             h1(class= text) 
-            p #{time}<br />#{data.temperature}&deg;F<br />#{data.windSpeed}Mph #{today.windDirection}<br />#{press}inHg
+            p #{time}<br />#{data.temperature}&deg;F<br />#{data.windSpeed}mph<br />#{press}hPa
           </div>
         </div>
 
@@ -57,7 +56,7 @@ block content
         <div class="freezing">
           <div class="weathertext">
             h1(class= text) 
-            p #{time}<br />#{data.temperature}&deg;F<br />#{data.windSpeed}Mph #{today.windDirection}<br />#{press}inHg
+            p #{time}<br />#{data.temperature}&deg;F<br />#{data.windSpeed}mph<br />#{press}hPa
           </div>
         </div>
 
